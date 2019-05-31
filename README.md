@@ -10,12 +10,12 @@ We evaluated D-TIME for its stealth with 10 state-of-the-art anti-virus software
 
 ### Directory and details
 
-| Directory  |    Content                                                                           |
-|------------|:-------------------------------------------------------------------------------------|
-| PoCs       | Independent PoCs for major concepts used (for SCBC and Re-generating Emulators       |
-| emualtor   | The code for emulator and a sample injection code                                    |
-| samples    | 6 malware samples to test D-TIME in your environment                                 |
-| splitter   | The code for IDA-Pro plugin which will split the malware                             |
+| Directory  |    Content                                                                                     |
+|------------|:-----------------------------------------------------------------------------------------------|
+| PoCs       | Independent PoCs for major concepts used (for covert channel and Re-generating Emulators)      |
+| emualtor   | The code for emulator and a sample injection code                                              |
+| samples    | 6 malware samples to test D-TIME in your environment                                           |
+| splitter   | The code for IDA-Pro plugin which will split the malware                                       |
 
 Description to each module is given in the README of respective directory.
 
