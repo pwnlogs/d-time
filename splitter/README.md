@@ -27,3 +27,5 @@ The splitter is an IDA-Pro plugin which will split the malware executable. Follo
       6. Provide commandline arguments if any
       7. Click OK
       
+splitter will now create a number of files in `dir2`.
+You can now inject these files using `../emualtor`
