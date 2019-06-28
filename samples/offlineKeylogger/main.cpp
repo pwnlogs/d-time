@@ -1,3 +1,21 @@
+/*-------------------------------------------------------------------------------------------------
+ *
+ *      Sample Malware: Offline Keylogger
+ *      Function      : Log keystrokes to a file in tmp directory
+ * 
+ *-----------------------------------------------------------------------------------------------
+ *
+ *		Best built in Visual Studio 10
+ *          Porject settings (Configuration Properties):
+ *				1. C/C++ --> Advanced --> Calling convention
+ *				   Set __stdcall (Gz)
+ *				2. Linker --> General --> Enable Incremental Linking
+ *				   Set NO
+ *				3. Linker --> System --> SubSystem
+ *				   Set CONSOLE
+ *
+ *-----------------------------------------------------------------------------------------------*/
+
 #include<windows.h>
 #include<stdio.h>
 #include<winuser.h>
