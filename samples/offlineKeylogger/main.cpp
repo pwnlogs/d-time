@@ -9,9 +9,11 @@
  *          Porject settings (Configuration Properties):
  *				1. C/C++ --> Advanced --> Calling convention
  *				   Set __stdcall (Gz)
- *				2. Linker --> General --> Enable Incremental Linking
+ *              2. C/C++ --> Code Generation --> Buffer Security Check
+ *                 Set NO
+ *				3. Linker --> General --> Enable Incremental Linking
  *				   Set NO
- *				3. Linker --> System --> SubSystem
+ *				4. Linker --> System --> SubSystem
  *				   Set CONSOLE
  *
  *-----------------------------------------------------------------------------------------------*/
