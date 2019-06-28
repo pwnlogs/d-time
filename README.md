@@ -28,11 +28,14 @@ __It is assumed that the reader has already gone through the research paper - _"
 
 Detailed instructions for each of the following steps are given in README of relevent directories or respective files. 
 
-__Note:__ The following steps assume the use of _Offline Keylogger_ sample. The steps to build other samples are similar.
+__Note 1:__ We recomment building the system in debug  mode for the first time. Once you have understood the framework you can build the same in release mode.
+
+__Note 2:__ We recomment attempting the _Offline Keylogger_ sample for the first time. It is the simplest sample that we have provided.
+
 
 #### Step 1: Offline Phase  
 In Offline Phase, we create chunks that will be distributed across threads in the Online Phase. For this,
-   1. Build `samples/offlineKeylogger/main.cpp`
+   1. Build one of the sample malware.
    1. Now we can use the malware binary(output of above build operation) to create malware chunks using `splitter`.
       `splitter` creates the chunks and write them to seperate files.
    1. Follow the instructions provided under `splitter` to generate these files.
@@ -41,9 +44,9 @@ In Offline Phase, we create chunks that will be distributed across threads in th
 In the Online Phase, we inject the emulator to threads and execute malware chunks in a distributed fashion. `emulator` contains instructions to build the emulator along with a sample injector which will inject the emulators for you.
    1. Build the `emulator`.
    2. Copy the chunk files to your working directory for emulator.
-   3. Run the `emulator.exe`.  
-   The `emulator.exe` contains the  actual emulator code and a sample injector. It will:
-       1. Read your chunks from the working directory and store them in shared memory
+   3. Run emulator.exe.  
+   The emulator build contains the  actual emulator code and a sample injector. It will:
+       1. Read your chunks from the working directory and store them in shared memory.
        2. Inject the emulator to victim processes.
-       3. Exit  
+       3. Exit.  
        The injected emulator will now execute the chunks and re-generate themselves to execute more chunks.
