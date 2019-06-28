@@ -43,7 +43,7 @@ In Offline Phase, we create chunks that will be distributed across threads in th
 #### Step 2: Online Phase
 In the Online Phase, we inject the emulator to threads and execute malware chunks in a distributed fashion. `emulator` contains instructions to build the emulator along with a sample injector which will inject the emulators for you.
    1. Build the `emulator`.
-   2. Copy the chunk files to your working directory for emulator.
+   2. Copy the chunk files generated in step 1 to your working directory for emulator.
    3. Run emulator.exe.  
    The emulator build contains the  actual emulator code and a sample injector. It will:
        1. Read your chunks from the working directory and store them in shared memory.
