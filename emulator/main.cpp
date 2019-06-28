@@ -18,12 +18,15 @@
  *              2. Change NBLOCKS, NSEGMS and NPROC to match the current malware split
  *              3. Best run in Visual Studio, disable all optimizations for exec.cpp
  *
- *		Visual Studio Porject settings (Configuration Properties):
+ *		Best built in Visual Studio 10
+ * 			Porject settings (Configuration Properties):
  *				1. C/C++ --> Advanced --> Calling convention
  *				   Set __stdcall (Gz)
- *				2. Linker --> General --> Enable Incremental Linking
+ *              2. C/C++ --> Code Generation --> Buffer Security Check
+ *                 Set NO
+ *				3. Linker --> General --> Enable Incremental Linking
  *				   Set NO
- *				3. Linker --> System --> SubSystem
+ *				4. Linker --> System --> SubSystem
  *				   Set CONSOLE
  *
  *-----------------------------------------------------------------------------------------------*/
