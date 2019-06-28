@@ -1,11 +1,11 @@
 # D-TIME
-__D-TIME: Distributed Threadless Independent Malware Execution framework to evade runtime detection__
+__D-TIME: Distributed Threadless Independent Malware Execution for Runtime Obfuscation__
 
-An important aspect of malware design is to be able to evade detection. This is increasingly difficult to achieve with powerful runtime detection techniques based on behavioural and heuristic analysis. D-TIME is a new distributed threadless independent malware execution framework to evade runtime detection.
+An important aspect of malware design is to be able to evade detection. This is increasingly difficult to achieve with pow erful runtime detection techniques based on behavioural and heuristic analysis. In this paper, we propose D-TIME, a new distributed threadless independent malware execution frame work to evade runtime detection.
 
-D-TIME splits a malware executable into small chunks of instructions and executes one chunk at a time in the context of an infected thread. It uses a Microsoft Windows feature called Asynchronous Procedure Call (APC) to facilitate chunk invocation; shared memory to coordinate between chunk executions; and a novel Covert Broadcasting Channel for communication between various chunk executions. The small size of the chunks along with the asynchronous nature of the execution makes runtime detection difficult, while the coordinated execution of the chunks leads to the intended malign action. D-TIME is designed to be self-regenerating ensuring high resilience of the system. 
+D-TIME splits a malware executable into small chunks of instructions and executes one chunk at a time in the context of an infected thread. It uses a Microsoft Windows feature called Asynchronous Procedure Call (APC) to facilitate chunk invocation; shared memory to coordinate between chunk executions; and a novel Semaphore based Covert Broadcasting Channel (SCBC) for communication between various chunk executions. The small size of the chunks along with the asynchronous nature of the execution makes runtime detection difficult, while the coordinated execution of the chunks leads to the intended malign action. D-TIME is designed to be self-regenerating ensuring high resilience of the system.
 
-We evaluated D-TIME for its stealth with 10 state-of-the-art anti-virus software, CPU usage, and Performance Counters. All ten anti-virus software were unable to detect D-TIME. We seen an average increase in the CPU utilization by 20% when a D-TIME infected process executes.
+We evaluate D-TIME on a Microsoft Windows system with six different malware and demonstrate its undetectability with 10 different anti-virus software. We also study the CPU usage and its influence on Performance Counters.
 
 
 ### Directory and details
