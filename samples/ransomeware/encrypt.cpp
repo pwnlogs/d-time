@@ -1,3 +1,31 @@
+/*-------------------------------------------------------------------------------------------------
+ *
+ *      Sample Malware: Ransomeware
+ *      Function      : Encrypt files
+ *      Note 1        : For the testing purpose, only files in "Documents\DummyFiles" is encrypted
+ *      Note 2        : Duplication of Handle required FindNextFile() is not supported by D-TIME for now
+ *                      Thus Ransomeware should target threads of the same process while testing
+ *      Requirement   : Existance of "Docuemnts\DummyFiles" and some files in it
+ * 
+ *-----------------------------------------------------------------------------------------------
+ *
+ *        Best built in Visual Studio 10
+ *          Porject settings (Configuration Properties):
+ * 
+ *              1. C/C++ --> Advanced --> Calling convention
+ *                 Set __stdcall (Gz)
+ * 
+ *              2. C/C++ --> Code Generation --> Buffer Security Check
+ *                 Set NO
+ * 
+ *              3. Linker --> General --> Enable Incremental Linking
+ *                 Set NO
+ * 
+ *              4. Linker --> System --> SubSystem
+ *                 Set CONSOLE
+ *
+ *-----------------------------------------------------------------------------------------------*/
+
 #define _GNU_SOURCE
 //#include <stdio.h>
 #include <Windows.h>
