@@ -30,7 +30,7 @@ Detailed instructions for each of the following steps are given in README of rel
 
 | |
 |:-:|
-| __IMPORTANT:__ We have tested the D-TIME in __Windows 10 Pro (1803)__ using __Visual Studio 10__. You are recommended to use a similar setup for your first attempt to avoid confusions. |
+| __IMPORTANT:__ We have tested the D-TIME in __Windows 10 Pro (1803)__ using __Visual Studio 10__. You are recommended to use a similar setup for your first attempt to avoid confusions. (You can safely use the latest version of Windows 10) |
 | |
 
 __Note 1:__ We recommend building the system in debug  mode for the first time. Once you have understood the framework you can build the same in release mode.
@@ -56,6 +56,7 @@ In the Online Phase, we inject the emulator to threads and execute malware chunk
        1.  `#define _NPROC` is the number of victims. This should match the number of applications uncommented under `#ifndef __SELF_INJECTION__`.
    1. Build the `emulator`.
    2. Copy the chunk files generated in step 1 to your working directory of emulator.
+   1. Make sure that your victim processes are running.
    3. Run emulator.exe.  
    The emulator build contains the  actual emulator code and a sample injector. It will:
        1. Read your chunks from the working directory and store them in shared memory.
