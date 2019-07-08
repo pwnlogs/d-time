@@ -63,6 +63,7 @@ In the Online Phase, we inject the emulator to threads and execute malware chunk
        2. Inject the emulator to victim processes.
        3. Exit.  
        The injected emulator will now execute the chunks and re-generate themselves to execute more chunks.
+   3. __Tip:__ Adjust `skip_count` and `whitelist_count` arrays in `main.cpp` to control the threads targetted. Avoid targetting the main/most important threads. If these threads get busy with APC executions, it can easily hang the process.
 
 ### Victim Processes
 | |
