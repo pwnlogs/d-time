@@ -21,6 +21,8 @@
  *              4. Linker --> System --> SubSystem
  *                 Set CONSOLE
  *
+ *              5. Set hostname as commandline argument
+ *
  *-----------------------------------------------------------------------------------------------*/
 #include <stdio.h>
 #include <Windows.h>

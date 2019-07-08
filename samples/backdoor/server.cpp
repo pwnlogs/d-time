@@ -17,8 +17,6 @@
  *              3. Linker --> General --> Enable Incremental Linking
  *                 Set NO
  * 
- *              4. Linker --> System --> SubSystem
- *                 Set CONSOLE
  *
  *-----------------------------------------------------------------------------------------------*/
 
