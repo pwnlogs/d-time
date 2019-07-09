@@ -30,7 +30,7 @@ Detailed instructions for each of the following steps are given in README of rel
 
 | |
 |:-:|
-| __IMPORTANT:__ We have tested the D-TIME in __Windows 10 Pro (1803)__ using __Visual Studio 2010__. For the splitter, please use __IDA Pro 6.5__. You are recommended to use a similar setup for your first attempt to avoid confusions. (You can safely use the latest version of Windows 10) |
+| __IMPORTANT:__ We have tested the D-TIME in __Windows 10 Pro (1803)__ using __Visual Studio 2010__. For the splitter, please use __IDA Pro 6.5 (32bit)__. You are recommended to use a similar setup for your first attempt to avoid confusions. (You can safely use the latest version of Windows 10) |
 | |
 
 __Note 1:__ We recommend building the system in debug  mode for the first time. Once you have understood the framework you can build the same in release mode.
