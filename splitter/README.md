@@ -11,7 +11,7 @@ The splitter is an IDA-Pro plugin which will split the malware executable. Follo
                   |------dir2
                   |------malWASH_intr
                   
-2. Create two files `code_1` and `code_1` under `malWASH_intr`. You may leave them empty.
+2. Create two files `code_1` and `code_2` under `malWASH_intr`. You may leave them empty.
 3. Copy your malware executable (say `malware.exe`) to `dir2`.
 4. Copy the plugin (`output/splitter.plw`) to your IDA Pro plugin directory.
 5. Open `malware.exe` in IDA Pro.
