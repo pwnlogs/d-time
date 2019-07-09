@@ -1,6 +1,10 @@
 The first phase of D-TIME is creation of chunks by splitting the malware executable.
 We have adopted the _splitter_ from malWASH (developed by Ispoglou and Payer).
 
+| |
+|:-:|
+| __Important:__ The splitter-plugin is built for IDA Pro 6.5 |
+||
 
 ### How to use
 The splitter is an IDA-Pro plugin which will split the malware executable. Follow the steps carefully to avoid any confusions.
