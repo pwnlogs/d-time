@@ -46,7 +46,7 @@ void __stdcall check(ULONG_PTR parameter) {
 		cout << "[+] Semaphore opened from Thread: " << GetCurrentThreadId() << endl;
 		LONG prev_count = 0;
 
-		HANDLE mtx = OpenMutex(MUTEX_ALL_ACCESS, FALSE, mtxName);
+		HANDLE mtx = OpenMutexA(MUTEX_ALL_ACCESS, FALSE, mtxName);
 		if (mtx != NULL) {
 			cout << "[+] Opened mutex successfully " << endl;
 		}
