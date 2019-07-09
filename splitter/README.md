@@ -1,5 +1,7 @@
 The first phase of D-TIME is creation of chunks by splitting the malware executable.
-We have adopted the _splitter_ from malWASH (developed by Ispoglou and Payer).
+We have adopted the _splitter_ from [malWASH][1] (developed by Ispoglou and Payer).
+
+[1]:https://github.com/HexHive/malWASH
 
 | |
 |:-:|
