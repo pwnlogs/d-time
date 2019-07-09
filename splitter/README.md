@@ -3,7 +3,7 @@ We have adopted the _splitter_ from malWASH (developed by Ispoglou and Payer).
 
 | |
 |:-:|
-| __Important:__ The splitter-plugin is built for IDA Pro 6.5 |
+| __Important:__ The splitter-plugin is built for __IDA Pro 6.5 (32bit)__ |
 ||
 
 ### How to use
